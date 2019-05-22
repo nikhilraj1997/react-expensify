@@ -21,11 +21,9 @@ export class ExpenseListFilters extends React.Component {
 	onFocusChange = calendarFocused => {
 		this.setState(() => ({ calendarFocused }))
 	}
-
 	onTextChange = e => {
 		this.props.setTextFilter(e.target.value)
 	}
-
 	onSortChange = e => {
 		if (e.target.value === "date") {
 			this.props.sortByDate()
@@ -33,7 +31,6 @@ export class ExpenseListFilters extends React.Component {
 			this.props.sortByAmount()
 		}
 	}
-
 	render() {
 		return (
 			<div>
@@ -44,9 +41,9 @@ export class ExpenseListFilters extends React.Component {
 				</select>
 				<DateRangePicker
 					startDate={this.props.filters.startDate}
-					startDateId="filterStartDatePicker"
+					startDateId="filterStartDate"
 					endDate={this.props.filters.endDate}
-					endDateId="filterEndDatePicker"
+					endDateId="filterEndDate"
 					onDatesChange={this.onDatesChange}
 					focusedInput={this.state.calendarFocused}
 					onFocusChange={this.onFocusChange}
@@ -66,7 +63,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	setTextFilter: text => dispatch(setTextFilter(text)),
 	sortByDate: () => dispatch(sortByDate()),
-	sortByAmount: () => dispatch(sortByAmount),
+	sortByAmount: () => dispatch(sortByAmount()),
 	setStartDate: startDate => dispatch(setStartDate(startDate)),
 	setEndDate: endDate => dispatch(setEndDate(endDate))
 })
